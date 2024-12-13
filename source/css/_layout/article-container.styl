@@ -2,12 +2,12 @@
   overflow-wrap break-word
   +maxWidth768()
     overflow hidden
-    padding .5rem
+    padding 1rem
 
   .post &
     padding 1rem 2rem
     +maxWidth768()
-      padding .5rem
+      padding 1rem
 
   iframe
     border-radius 12px
@@ -117,7 +117,7 @@
       &:before
         position absolute
         top 0
-        left 0
+        left 5px
         color var(--efu-fontcolor)
         transition all .3s ease-out 0s
         background var(--efu-lighttext)
@@ -136,14 +136,14 @@
 
         &:before
           margin 0
-          top .9em
-          width .2em
-          height .2em
+          top 1.05em
+          width .1em
+          height .1em
           border-radius 50%
           background 0 0
           content ""
           line-height .2em
-          border 0.21em solid var(--efu-lighttext)
+          border 0.15em solid var(--efu-lighttext)
           background var(--efu-lighttext)
 
   ol
