@@ -1,7 +1,7 @@
 .post
   #page-header.post-bg
     height 20rem
-    background-color var(--efu-background)
+
     transition .6s
     overflow hidden
 
@@ -10,14 +10,14 @@
 
     +maxWidth768()
       height 30rem
-      background-color var(--efu-main) !important
+
       transition 0s
       margin-bottom -12px
 
     &::before
       transition .3s
       height 20rem
-      background-color var(--efu-main)
+
       opacity 1
       position absolute
       top 0
@@ -29,7 +29,7 @@
       +minWidth1300()
         height 25rem
         opacity 0
-        background-color var(--efu-main)
+
         animation slide-in-op .6s 0s forwards
 
       +maxWidth768()
@@ -96,7 +96,7 @@
       overflow hidden
       margin 0 -20% 0 auto
       transform rotate(10deg) translateY(-10%) scale(2)
-      filter blur(10px)
+      filter blur(10px) brightness(60%)
 
       &:after
         position absolute
@@ -105,17 +105,17 @@
         height 100%
         top 0
         left 0
-        box-shadow 110px -130px 300px 60px var(--efu-main) inset
+
 
       +minWidth768()
-        width 70%
+        width 100%
         height 100%
         position relative
         overflow hidden
         margin 0 -20% 0 auto
-        transform rotate(10deg) translateY(-8%) scale(1.8)
-        filter blur(30px)
-        opacity 0
+        transform rotate(0deg) translateY(5%) scale(1.8)
+        filter blur(20px) brightness(60%)
+        opacity 1
 
         &.loaded
           display block
@@ -126,12 +126,12 @@
       +maxWidth768()
         margin 0 0 0 auto
         transform rotate(0) translateY(0) scale(1)
-        filter blur(0)
+        filter blur(0) brightness(60%)
         width 100%
         height 30rem
 
-        &:after
-          box-shadow 0 0 205px 59px var(--efu-main) inset
+
+
 
       &.loaded
         display block
