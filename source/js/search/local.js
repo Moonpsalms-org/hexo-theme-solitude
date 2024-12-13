@@ -2,6 +2,7 @@ window.addEventListener("load", () => {
     let store = [];
     const $searchMask = document.getElementById("search-mask");
     const $searchDialog = document.querySelector("#local-search .search-dialog");
+
     window.openSearch = () => {
         utils.animateIn($searchMask, "to_show 0.5s");
         $searchDialog.style.display = "flex";
@@ -17,25 +18,18 @@ window.addEventListener("load", () => {
         fixSafariHeight();
         window.addEventListener("resize", fixSafariHeight);
     };
+
     const fixSafariHeight = () => {
         if (window.innerWidth < 768) {
             $searchDialog.style.setProperty("--search-height", window.innerHeight + "px");
         }
     };
+
     const closeSearch = () => {
         utils.animateOut($searchDialog, "search_close .5s");
         utils.animateOut($searchMask, "to_hide 0.5s");
         window.removeEventListener("resize", fixSafariHeight);
     };
-
-    const addEventTagList = () => {
-        const list = document.querySelectorAll("#local-search .tag-list");
-        if (list.length > 0) {
-            list.forEach(el => el.addEventListener("click", (e) => closeSearch()))
-        }
-    }
-
-    addEventTagList()
 
     const addEventCtrlK = () => {
         document.addEventListener("keydown", function (event) {
@@ -44,9 +38,9 @@ window.addEventListener("load", () => {
                 openSearch();
             }
         });
-    }
+    };
 
-    addEventCtrlK()
+    addEventCtrlK();
 
     const searchFnOnce = () => {
         $searchMask.addEventListener("click", closeSearch);
@@ -66,8 +60,8 @@ window.addEventListener("load", () => {
             evt.initEvent('input', true, true)
             t.value = selectTextNow
             t.dispatchEvent(evt)
-        })
-    }
+        });
+    };
 
     searchClickFn();
 
@@ -82,18 +76,17 @@ window.addEventListener("load", () => {
                     let entry = entries[i];
                     let title = entry.getElementsByTagName("title")[0].textContent;
                     let link = entry.getElementsByTagName("url")[0].textContent;
-                    let content = entry.getElementsByTagName("content")[0].textContent;
+                    // 删除正文内容和标签部分
                     store.push({
                         'title': title,
-                        'link': link,
-                        'content': content
+                        'link': link
                     });
                 }
             })
             .catch(err => console.error("Error loading search data:", err));
     }
 
-    let query = ''
+    let query = '';
     let currentPage = 0;
     const resultsPerPage = 10;
     let results = [];
@@ -124,9 +117,10 @@ window.addEventListener("load", () => {
         $tips.innerHTML = '';
     }
 
+    // 修改 search 函数，仅根据标题进行搜索
     function search(query) {
         const regex = new RegExp(query.split('').join('.*'), 'i');
-        return store.filter(page => regex.test(page.title) || regex.test(page.content));
+        return store.filter(page => regex.test(page.title));
     }
 
     function renderResults(results, page) {
@@ -155,7 +149,7 @@ window.addEventListener("load", () => {
         });
         const count = document.createElement("span");
         count.className = "search-result-count";
-        count.innerHTML = GLOBAL_CONFIG.lang.search.count.replace(/\$\{count}/, results.length)
+        count.innerHTML = GLOBAL_CONFIG.lang.search.count.replace(/\$\{count}/, results.length);
         $tips.appendChild(count);
     }
 
@@ -197,6 +191,6 @@ window.addEventListener("load", () => {
         initUI();
     });
     window.addEventListener('pjax:complete', () => {
-        searchClickFn()
-    })
+        searchClickFn();
+    });
 });
