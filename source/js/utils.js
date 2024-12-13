@@ -37,9 +37,9 @@
                 document.body.style.paddingRight = `${paddingRight}px`;
             }
         },
-        snackbarShow: (text, showAction = false, duration = 5000) => {
-            Snackbar.show({ text, showAction, duration, pos: 'top-center' });
-        },
+        // snackbarShow: (text, showAction = false, duration = 5000) => {
+        //     Snackbar.show({ text, showAction, duration, pos: 'top-center' });
+        // },
         copy: async (text) => {
             const message = await navigator.clipboard.writeText(text)
                 .then(() => GLOBAL_CONFIG.lang.copy.success)

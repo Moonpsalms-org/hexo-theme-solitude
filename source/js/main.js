@@ -247,7 +247,7 @@ const sco = {
     const newMode = isDarkMode ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newMode);
     utils.saveToLocal.set('theme', newMode, 0.02);
-    utils.snackbarShow(GLOBAL_CONFIG.lang.theme[newMode], false, 2000);
+    // utils.snackbarShow(GLOBAL_CONFIG.lang.theme[newMode], false, 2000);
     if (typeof rm === 'object') rm.mode(!isDarkMode) && rm.hideRightMenu();
     handleThemeChange(newMode);
   },
@@ -287,7 +287,7 @@ const sco = {
         el.setSelectionRange(-1, -1);
       }
     });
-    utils.snackbarShow(GLOBAL_CONFIG.lang.totalk, false, 2000);
+    // utils.snackbarShow(GLOBAL_CONFIG.lang.totalk, false, 2000);
   },
   initbbtalk() {
     const bberTalkElement = document.querySelector('#bber-talk');
@@ -776,7 +776,7 @@ document.addEventListener('visibilitychange', () => {
 window.onkeydown = e => {
   const { keyCode, ctrlKey, shiftKey } = e;
   if (keyCode === 123 || (ctrlKey && shiftKey && keyCode === 67)) {
-    utils.snackbarShow(GLOBAL_CONFIG.lang.f12, false, 3000);
+    // utils.snackbarShow(GLOBAL_CONFIG.lang.f12, false, 3000);
   }
   if (keyCode === 27) {
     sco.hideConsole();
@@ -784,5 +784,5 @@ window.onkeydown = e => {
 };
 
 document.addEventListener('copy', () => {
-  utils.snackbarShow(GLOBAL_CONFIG.lang.copy.success, false, 3000);
+  // utils.snackbarShow(GLOBAL_CONFIG.lang.copy.success, false, 3000);
 });

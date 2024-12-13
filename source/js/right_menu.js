@@ -59,7 +59,7 @@ const rm = {
     copyText(e) {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(e);
-            utils.snackbarShow(GLOBAL_CONFIG.lang.copy.success, false, 2000);
+            // utils.snackbarShow(GLOBAL_CONFIG.lang.copy.success, false, 2000);
         }
         this.hideRightMenu();
     },
@@ -76,7 +76,7 @@ const rm = {
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
         } catch (error) {
-            utils.snackbarShow(GLOBAL_CONFIG.right_menu.img_error, false, 2000);
+            // utils.snackbarShow(GLOBAL_CONFIG.right_menu.img_error, false, 2000);
         }
     },
     copyImage(imgUrl = this.domsrc) {
@@ -104,7 +104,7 @@ window.oncontextmenu = (ele) => {
     if (GLOBAL_CONFIG.right_menu.ctrlOriginalMenu) {
         if (firstShowRightMenu) {
             firstShowRightMenu = false;
-            utils.snackbarShow(GLOBAL_CONFIG.right_menu.ctrlOriginalMenu, false, 2000);
+            // utils.snackbarShow(GLOBAL_CONFIG.right_menu.ctrlOriginalMenu, false, 2000);
         }
         if (ele.ctrlKey) return true;
     }
